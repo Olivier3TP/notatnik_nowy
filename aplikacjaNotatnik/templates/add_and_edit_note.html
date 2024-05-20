@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+<link rel="icon" href="{% static 'notes-icon.png' %}" type="image/x-icon">
+<link href="{% static "css/notatnik.css" %}" rel="stylesheet">
+
+{% block content %}
+    <div class="main-div">
+        <form method="post" class="form-style">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="info-center">
+                <hr>
+                <a class="btn btn-warning" href="{% url 'notes_list' %}">Wróć</a>
+                <button class="btn btn-warning" type="submit">Zapisz</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

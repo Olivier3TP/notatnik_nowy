@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ note.title }} {% endblock %}
+<link rel="icon" href="{% static 'notes-icon.png' %}" type="image/x-icon">
+<link href="{% static "css/notatnik.css" %}" rel="stylesheet">
+
+{% block content %}
+    <div class="main-div">
+        <div class="detail-div note-text">
+            <h1>{{ note.title }}</h1>
+            <hr>
+            <h5>{{ note.text }}</h5>
+            <p>Status: {{ note.status }}</p>
+            <p>Dodana przez {{ note.author }} o {{ note.time }}</p>
+        </div>
+        <div class="info-center">
+            <hr>
+            <a class="btn btn-warning" href="{% url 'notes_list' %}">Wróć</a>
+            <a class="btn btn-warning" href="{% url 'edit_note' note.id %}">Edytuj notatkę</a>
+        </div>
+    </div>
+{% endblock %}
